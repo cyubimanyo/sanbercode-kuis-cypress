@@ -15,5 +15,9 @@ Cypress.Commands.add('login', (email, password) => {
     cy.get('form > .buttons > .button-1').should('be.visible').click()
     cy.contains(email).should('be.visible')
     cy.contains('Log out').should('be.visible')
-    cy.log('Login Berhasil')
+})
+
+Cypress.Commands.add('search', (search) => {
+  cy.get('#small-searchterms').should('be.visible').clear().type(search)
+  cy.get('form > .button-1').should('be.visible').click()
 })
