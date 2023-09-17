@@ -1,6 +1,7 @@
 import pomRegister from "../../support/page-object/pomRegister";
+import pomRegisterValidationError from "../../support/page-object/pomRegisterValidationError";
 
-describe('Register with n Test Cases', () => {
+describe('Register with 3 Test Cases', () => {
   beforeEach(() => {
     cy.visit('/')
   })
@@ -33,4 +34,33 @@ describe('Register with n Test Cases', () => {
     });
   })
   
+  it('Register with All Fields Blank and should validate field error messages', () => {
+    cy.get('.ico-register').should('be.visible').click()
+    cy.get('#register-button').should('be.visible').click()
+
+    // The error messages to be validated
+    const errorMessages = {
+      'First name': 'is required',
+      'Last name': 'is required',
+      'Email': 'is required',
+      'Password': 'is required'
+    };
+
+    // Validate each field error message
+    Object.entries(errorMessages).forEach(([field, errorMessage]) => {
+      pomRegisterValidationError.validateFieldErrorMessage(field, errorMessage);
+    });
+  })
+
+  it('Register with invalid Email and Password', () => {
+    cy.get('.ico-register').should('be.visible').click()
+    cy.get('#register-button').should('be.visible').click()
+
+    cy.readFile('cypress/fixtures/invalidRegister.json').then((account) => {
+      cy.get('.ico-register').should('be.visible').click()
+      cy.register(account.firstName, account.lastName, account.email, account.password, account.confirmPassword)
+      cy.log('Wrong email')
+      cy.log('The password and confirmation password do not match.')
+    })
+  })
 })
