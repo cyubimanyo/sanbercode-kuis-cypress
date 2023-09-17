@@ -1,0 +1,26 @@
+{
+  "name": "sanbercode-kuis-cypress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyubimanyo/sanbercode-kuis-cypress.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cyubimanyo/sanbercode-kuis-cypress/issues"
+  },
+  "homepage": "https://github.com/cyubimanyo/sanbercode-kuis-cypress#readme",
+  "devDependencies": {
+    "cypress": "^13.2.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.0.2",
+    "faker": "^6.6.6"
+  }
+}
