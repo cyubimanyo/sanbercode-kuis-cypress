@@ -5,10 +5,9 @@ describe('Login with 3 Test Cases', () => {
 
     it('Login with Valid Data', () => {
         // Read JSON file valid account
-        cy.readFile('cypress/fixtures/accountValidRegister.json').then((account) => {
+        cy.readFile('cypress/fixtures/validRegister.json').then((account) => {
           cy.get('.ico-login').should('be.visible').click()
           cy.login(account.email, account.password)
-          cy.log('Login Berhasil')
         })
       })
     
@@ -17,7 +16,6 @@ describe('Login with 3 Test Cases', () => {
       cy.readFile('cypress/fixtures/randomRegister.json').then((account) => {
         cy.get('.ico-login').should('be.visible').click()
         cy.login(account.email, account.password)
-        cy.log('Login Berhasil')
       })
     })
 
